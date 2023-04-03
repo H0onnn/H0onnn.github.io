@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-VoVSp8qZf3gr3kXuXggD6vvo8y8W3+MUCh/6+XQ6Uvvp1U+0YTUaT6X9zKKtPxgP" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Momentum App</title>
+</head>
+
+<body>
+    <form class="hidden" id="login-form">
+        <input required maxlength="15" type="text" placeholder="What is your name?">
+        <button>Log In</button>
+    </form>
+    <h2 id="clock">00:00:00</h2>
+    <h1 id="greeting" class="hidden"></h1>
+    <form id="todo-form" class="hidden">
+        <input id="todo-input" type="text" placeholder="Write a To Do and Press Enter" required>
+    </form>
+    <ul id="todo-list"></ul>
+    <p id="percent" class="hidden">달성률: 0%</p>
+    <div id="gauge"></div>
+    <div id="quotes">
+        <span class="quote"></span>
+        <span class="author"></span>
+    </div>
+    <script src="greetings.js"></script>
+    <script src="clock.js"></script>
+    <script src="quotes.js"></script>
+    <script src="background.js"></script>
+    <script src="todo.js"></script>
+
+</body>
+
+</html>
