@@ -1,0 +1,142 @@
+/* 요미네코 앱 토큰(src/theme/tokens.ts)을 웹으로 옮긴 값이다. 잉크는 브랜드·조작, 흰색은 콘텐츠에 쓴다. */
+:root {
+  --ink: #1b1a17;
+  --text: #1b1a17;
+  --text-secondary: #5b574f;
+  --text-tertiary: #6e685c;
+  --decor: #8e887c;
+  --background: #f7f3ec;
+  --surface: #fffdf9;
+  --surface-sunken: #efeae1;
+  --separator: rgba(27, 26, 23, 0.1);
+  --on-ink: #f7f3ec;
+  --on-ink-secondary: rgba(247, 243, 236, 0.66);
+  --radius-tag: 6px;
+  --radius-group: 22px;
+  --radius-stage: 36px;
+  --gutter: 20px;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--decor); text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--ink); }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+
+.page { max-width: 680px; margin: 0 auto; padding: 12px var(--gutter) 48px; }
+
+/* 위쪽 줄: 아이콘·앱 이름과 페이지 알약 */
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 56px; flex-wrap: wrap; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; text-decoration: none; }
+.brand img { width: 32px; height: 32px; border-radius: 30%; }
+.nav { display: flex; gap: 6px; }
+.nav a {
+  display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px;
+  border-radius: 999px; background: var(--surface-sunken); font-size: 14px; font-weight: 600; text-decoration: none;
+}
+.nav a[aria-current="page"] { background: var(--ink); color: var(--on-ink); }
+
+/* 잉크 무대: 고양이가 왼쪽 아래에서 빼꼼 나온다 */
+.stage {
+  position: relative; overflow: hidden; margin-top: 8px;
+  background: var(--ink); color: var(--on-ink); border-radius: var(--radius-stage);
+  padding: 28px 24px 0;
+}
+.stage h1 { margin: 0; font-size: 28px; line-height: 1.3; font-weight: 800; letter-spacing: -0.02em; }
+.stage .lead { margin: 6px 0 0; color: var(--on-ink-secondary); font-size: 15px; }
+.stage-foot { display: flex; align-items: flex-end; gap: 12px; margin-top: 18px; margin-left: -24px; }
+.stage-cat { display: block; width: 112px; height: 112px; flex: none; }
+.bubble {
+  position: relative; margin-bottom: 28px; padding: 12px 16px;
+  background: var(--surface); color: var(--text); border-radius: 22px 22px 22px 8px;
+  font-size: 15px; font-weight: 500; line-height: 1.55;
+}
+
+h2 { margin: 40px 0 12px; font-size: 20px; line-height: 1.4; font-weight: 800; letter-spacing: -0.01em; }
+h3 { margin: 0 0 4px; font-size: 16px; font-weight: 700; }
+p { margin: 0 0 12px; }
+.muted { color: var(--text-secondary); }
+.small { font-size: 14px; color: var(--text-tertiary); }
+
+/* 흰 묶음 카드 */
+.group { background: var(--surface); border-radius: var(--radius-group); padding: 20px; }
+.group + .group { margin-top: 10px; }
+.group > :last-child { margin-bottom: 0; }
+.group ul, .group ol { margin: 0; padding-left: 1.2em; }
+.group li + li { margin-top: 6px; }
+
+.summary { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.summary .group { padding: 18px; }
+.summary p { margin: 0; font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+
+/* 항목 묶음: 표 대신 쓰는 정의 목록(좁은 화면에서 가로 스크롤이 없다) */
+.facts { margin: 0; }
+.facts div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--separator); }
+.facts div:first-child { border-top: 0; padding-top: 0; }
+.facts div:last-child { padding-bottom: 0; }
+.facts dt { color: var(--text-tertiary); font-size: 14px; font-weight: 600; padding-top: 1px; }
+.facts dd { margin: 0; }
+.tag {
+  display: inline-block; margin-bottom: 10px; padding: 2px 8px;
+  background: var(--surface-sunken); border-radius: var(--radius-tag); font-size: 13px; font-weight: 700; color: var(--text-secondary);
+}
+
+/* 알약 버튼 */
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.button {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px;
+  border-radius: 999px; background: var(--ink); color: var(--on-ink); font-weight: 700; text-decoration: none;
+}
+.button.soft { background: var(--surface-sunken); color: var(--ink); }
+.email { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
+
+/* 자주 묻는 질문: 한 묶음 안의 펼치는 행 */
+.faq { background: var(--surface); border-radius: var(--radius-group); padding: 4px 20px; }
+.faq details + details { border-top: 1px solid var(--separator); }
+.faq summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 56px; padding: 12px 0; cursor: pointer; list-style: none; font-weight: 700;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ""; flex: none; width: 8px; height: 8px; margin-right: 4px;
+  border-right: 2px solid var(--decor); border-bottom: 2px solid var(--decor); transform: rotate(45deg) translateY(-2px);
+}
+.faq details[open] summary::after { transform: rotate(-135deg) translateY(-2px); }
+.faq .answer { padding: 0 0 16px; color: var(--text-secondary); }
+.faq .answer ul, .faq .answer ol { margin: 0; padding-left: 1.2em; }
+.faq .answer li + li { margin-top: 6px; }
+.faq .answer > :last-child { margin-bottom: 0; }
+
+.path { font-weight: 600; color: var(--text); }
+
+
+.footer { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 56px; color: var(--text-tertiary); font-size: 13px; text-align: center; }
+.footer .tile { width: 40px; height: 40px; border-radius: 12px; background: var(--ink); overflow: hidden; }
+.footer .tile img { display: block; width: 40px; height: 40px; }
+.footer nav { display: flex; gap: 14px; }
+.footer a { color: var(--text-tertiary); }
+
+@media (max-width: 520px) {
+  .summary { grid-template-columns: 1fr; }
+  .facts div { grid-template-columns: 1fr; gap: 2px; }
+  .stage h1 { font-size: 26px; }
+  .stage-cat { width: 96px; height: 96px; }
+}
+
+.intro { margin-top: 24px; }
+.note { margin-top: 12px; }
