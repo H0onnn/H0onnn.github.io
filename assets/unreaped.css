@@ -1,0 +1,177 @@
+/* 언리프트 안내 페이지. 색은 앱 아이콘(밤하늘, 달, 비석, 불과 얼음 룬)에서 그대로 가져왔다. Galmuri11은 12px 격자라 글자 크기를 12의 배수로 둔다. */
+:root {
+  --sky-0: #140c22;
+  --sky-1: #1d1230;
+  --sky-2: #28183f;
+  --sky-3: #352151;
+  --moon-0: #fff8e2;
+  --moon-1: #f1e6c2;
+  --moon-2: #d9c99a;
+  --moon-3: #b9a77a;
+  --ink: #0b0812;
+  --stone-0: #2f2a3c;
+  --stone-1: #474058;
+  --stone-2: #655d7c;
+  --fire-0: #8a2414;
+  --fire-1: #e0571f;
+  --fire-2: #ffb347;
+  --ice-0: #1d3f80;
+  --ice-1: #3f8fdb;
+  --ice-2: #a6e3ff;
+  --gutter: 16px;
+  --pixel-font: Galmuri11, "Pretendard Variable", Pretendard, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; background: var(--sky-0); }
+
+/* 하늘은 부드러운 그라데이션 대신 띠 하나로 끊는다 */
+body {
+  margin: 0;
+  background: linear-gradient(var(--sky-1) 0 80px, var(--sky-0) 80px) var(--sky-0);
+  color: var(--moon-1);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+a { color: var(--moon-0); text-decoration-line: underline; text-decoration-style: dotted; text-decoration-color: var(--moon-3); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+a:hover { color: var(--fire-2); text-decoration-color: var(--fire-2); }
+:focus-visible { outline: 2px solid var(--ice-2); outline-offset: 3px; }
+
+.page { max-width: 680px; margin: 0 auto; padding: 12px var(--gutter) 48px; }
+
+/* 위쪽 줄: 아이콘과 이름, 페이지 탭 */
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 56px; flex-wrap: wrap; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--pixel-font); font-weight: 700; font-size: 24px; color: var(--moon-0); text-decoration: none; }
+.brand img { width: 32px; height: 32px; border: 1px solid var(--ink); image-rendering: pixelated; }
+.nav { display: flex; gap: 6px; }
+.nav a {
+  display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px;
+  background: var(--stone-0); border: 1px solid var(--ink); box-shadow: inset 0 2px 0 var(--stone-1);
+  color: var(--moon-1); font-size: 14px; font-weight: 600; text-decoration: none;
+}
+.nav a:hover { color: var(--moon-0); background: var(--stone-1); }
+.nav a[aria-current="page"] { background: var(--moon-1); color: var(--ink); box-shadow: inset 0 -2px 0 var(--moon-3); }
+
+/* 무대: 맨 위에 게임 배너를 깔고 그 아래 제목 */
+.stage {
+  position: relative; margin-top: 8px; padding: 0 20px;
+  background: var(--sky-1); border: 1px solid var(--ink); box-shadow: 0 4px 0 var(--ink);
+}
+.stage::before {
+  content: ""; display: block; margin: 0 -20px 20px; aspect-ratio: 1024 / 500;
+  background: url("/assets/unreaped-banner.png") center / cover no-repeat;
+  image-rendering: pixelated; border-bottom: 1px solid var(--ink);
+}
+.stage h1 { margin: 0; font-family: var(--pixel-font); font-size: 48px; line-height: 1.3; font-weight: 700; color: var(--moon-0); text-shadow: 0 3px 0 var(--ink); }
+.stage .lead { margin: 8px 0 0; color: var(--moon-2); font-size: 15px; }
+.stage-foot { display: flex; align-items: flex-end; gap: 16px; margin-top: 20px; padding-bottom: 20px; }
+.stage-icon { display: block; width: 72px; height: 72px; flex: none; border: 1px solid var(--ink); image-rendering: pixelated; }
+.bubble {
+  position: relative; margin: 0 0 8px; padding: 12px 16px;
+  background: var(--moon-1); color: var(--ink); border: 1px solid var(--ink); box-shadow: inset 0 -3px 0 var(--moon-2);
+  font-size: 15px; font-weight: 600; line-height: 1.55;
+}
+/* 말풍선 꼬리: 4px 계단 두 칸 */
+.bubble::before, .bubble::after { content: ""; position: absolute; background: var(--moon-1); }
+.bubble::before { left: -5px; bottom: 10px; width: 5px; height: 8px; box-shadow: 0 -1px 0 var(--ink), 0 1px 0 var(--ink); }
+.bubble::after { left: -9px; bottom: 10px; width: 4px; height: 4px; box-shadow: 0 1px 0 var(--ink), -1px 0 0 var(--ink), 0 -1px 0 var(--ink); }
+
+/* 소제목 아래 불과 얼음 룬 띠 */
+h2 { margin: 44px 0 14px; font-family: var(--pixel-font); font-size: 24px; line-height: 1.4; font-weight: 700; color: var(--moon-0); }
+h2::after {
+  content: ""; display: block; width: 72px; height: 4px; margin-top: 8px;
+  background: linear-gradient(90deg,
+    var(--fire-0) 0 12px, var(--fire-1) 12px 24px, var(--fire-2) 24px 32px,
+    transparent 32px 40px,
+    var(--ice-2) 40px 48px, var(--ice-1) 48px 60px, var(--ice-0) 60px 72px);
+}
+h3 { margin: 0 0 6px; font-family: var(--pixel-font); font-size: 24px; line-height: 1.4; font-weight: 700; color: var(--moon-0); }
+p { margin: 0 0 12px; }
+strong { color: var(--moon-0); }
+.muted { color: var(--moon-2); }
+.small { font-size: 14px; color: var(--moon-3); }
+
+/* 비석 판 */
+.group {
+  padding: 20px; background: var(--stone-0);
+  border: 1px solid var(--ink); box-shadow: inset 0 2px 0 var(--stone-1), 0 4px 0 var(--ink);
+}
+.group + .group { margin-top: 14px; }
+.group > :last-child { margin-bottom: 0; }
+.group ul, .group ol { margin: 0; padding-left: 1.2em; }
+.group li + li { margin-top: 6px; }
+.group li::marker { color: var(--moon-3); }
+
+.summary { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+.summary .group { padding: 18px; }
+.summary .group + .group { margin-top: 0; }
+.summary p { margin: 0; font-size: 15px; color: var(--moon-2); line-height: 1.6; }
+
+/* 표 대신 쓰는 정의 목록(좁은 화면에서 가로 스크롤이 없다) */
+.facts { margin: 0; }
+.facts div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 10px 0; border-top: 1px dashed var(--stone-2); }
+.facts div:first-child { border-top: 0; padding-top: 0; }
+.facts div:last-child { padding-bottom: 0; }
+.facts dt { color: var(--moon-3); font-size: 14px; font-weight: 600; padding-top: 1px; }
+.facts dd { margin: 0; }
+
+/* 태그: 밖으로 나가는 정보는 불, 기기에 남는 정보는 얼음 */
+.tag {
+  display: inline-block; margin-bottom: 12px; padding: 2px 8px;
+  background: var(--fire-0); color: var(--fire-2); border: 1px solid var(--ink);
+  font-family: var(--pixel-font); font-size: 12px; font-weight: 700; line-height: 1.6;
+}
+.tag.ice { background: var(--ice-0); color: var(--ice-2); }
+
+/* 불 룬 버튼 */
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.button {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px;
+  background: var(--fire-1); color: var(--ink); border: 1px solid var(--ink);
+  box-shadow: inset 0 2px 0 var(--fire-2), 0 4px 0 var(--fire-0);
+  font-family: var(--pixel-font); font-size: 24px; font-weight: 700; text-decoration: none;
+}
+.button:hover { color: var(--ink); background: var(--fire-2); }
+.button:active { transform: translateY(2px); box-shadow: inset 0 2px 0 var(--fire-2), 0 2px 0 var(--fire-0); }
+.email { font-size: 20px; font-weight: 800; }
+
+/* 자주 묻는 질문: 한 판 안의 펼치는 행 */
+.faq {
+  padding: 4px 20px; background: var(--stone-0);
+  border: 1px solid var(--ink); box-shadow: inset 0 2px 0 var(--stone-1), 0 4px 0 var(--ink);
+}
+.faq details + details { border-top: 1px dashed var(--stone-2); }
+.faq summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 56px; padding: 12px 0; cursor: pointer; list-style: none; font-weight: 700; color: var(--moon-0);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; width: 16px; font-family: var(--pixel-font); font-size: 24px; line-height: 1; text-align: center; color: var(--fire-2); }
+.faq details[open] summary::after { content: "-"; color: var(--ice-2); }
+.faq .answer { padding: 0 0 16px; color: var(--moon-2); }
+.faq .answer > :last-child { margin-bottom: 0; }
+
+.footer { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 56px; color: var(--moon-3); font-size: 13px; text-align: center; }
+.footer .tile { width: 40px; height: 40px; border: 1px solid var(--ink); overflow: hidden; }
+.footer .tile img { display: block; width: 38px; height: 38px; image-rendering: pixelated; }
+.footer nav { display: flex; gap: 14px; }
+.footer a { color: var(--moon-3); }
+
+.intro { margin-top: 28px; }
+.note { margin-top: 12px; }
+
+@media (max-width: 520px) {
+  .summary { grid-template-columns: 1fr; }
+  .facts div { grid-template-columns: 1fr; gap: 2px; }
+  .stage { padding: 0 16px; }
+  .stage::before { margin: 0 -16px 16px; }
+  .stage h1 { font-size: 36px; }
+  .stage-foot { gap: 14px; }
+  .stage-icon { width: 60px; height: 60px; }
+}
